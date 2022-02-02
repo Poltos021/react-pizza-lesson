@@ -2,13 +2,11 @@
 import React from "react";
 import axios from 'axios';
 import {connect} from 'react-redux';
-import store from './redux/store';
-
 
 import { Routes, Route } from "react-router";
 import { Header } from "./components";
 import { Home, Cart } from './pages';
-import { setPizzas as setPizzasAction } from './redux/action/pizzas'
+import { setPizzas } from './redux/action/pizzas'
 
 /*
 function App() {
@@ -48,12 +46,14 @@ const mapStateToPorps = (state) => {
     items: state.pizzas.items,
   }
 };
+/*Нужен для того, чтобы из всего хранилища вытащить конкретные данные и пропихнуть их в props */
 
 const mapDispatchToPorps = (dispatch) => {
   return {
-    setPizzas: (items) => dispatch(setPizzasAction(items))
+    setPizzas: (items) => dispatch(setPizzas(items)),
   };
 };
+/*Нужен для того, чтобы из пропихнуть в props этого компонента определенный Action*/
 
 
 export default connect(mapStateToPorps, mapDispatchToPorps)(App);

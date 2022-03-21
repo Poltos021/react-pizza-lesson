@@ -30,7 +30,7 @@ class App extends React.Component{
     return (
       <div className="wrapper">
       <Header />
-        <div className="con tent">
+        <div className="content">
           <Routes>
             <Route path="/" element={<Home items={this.props.items}/>} exact/>
             <Route path="/cart" element={<Cart />} exact/>

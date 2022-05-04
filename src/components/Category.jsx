@@ -1,5 +1,30 @@
 import React from 'react'
 
+const Category = React.memo(function Category({items , onClickItem}) {
+  const [activeItem, setActiveItem] = React.useState(null);
+
+  const onSelectItem = (index) => {
+    setActiveItem(index);
+    onClickItem(index);
+  }
+
+    return (
+        <div className="categories">
+        <ul>
+          <li className={activeItem === null ? 'active' : ''} 
+          onClick={() => onSelectItem(null)}>Все</li>
+          {
+            items.map((name, index) => (
+            <li className={activeItem === index ? 'active' : ''} 
+             onClick={() => onSelectItem(index)} 
+             key={`${name}_${index}`}>{ name }</li>))
+          }
+        </ul>
+      </div>
+    )
+})
+export default Category;
+
 /*
 class Category extends React.Component{
   
@@ -31,25 +56,3 @@ class Category extends React.Component{
   )
   }
 }*/
-
-
-function Category({items , onClickItem}) {
-  const [activeItem, setActiveItem] = React.useState(null);
-
-
-    return (
-        <div className="categories">
-        <ul>
-          <li className={activeItem === null ? 'active' : ''} 
-          onClick={() => setActiveItem(null)}>Все</li>
-          {
-            items.map((name, key) => (
-            <li className={activeItem === key ? 'active' : ''} 
-             onClick={() => setActiveItem(key)} 
-             key={`${name}_${key}`}>{ name }</li>))
-          }
-        </ul>
-      </div>
-    )
-}
-export default Category;

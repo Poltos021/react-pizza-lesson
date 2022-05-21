@@ -11,7 +11,7 @@ function Header(){
       <div className="header__logo">
         <img width="38" src={logo} alt="Pizza logo"/>
         <div>
-          <h1>PolPizza</h1>
+          <h1>PoPizza</h1>
           <p>самая вкусная пицца во вселенной</p>
         </div>
       </div>

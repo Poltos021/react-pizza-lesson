@@ -1,25 +1,12 @@
 
 import React from "react";
-import axios from 'axios';
-import {useDispatch} from 'react-redux';
+
 
 import { Routes, Route } from "react-router";
 import { Header } from "./components";
 import { Home, Cart } from './pages';
-import { setPizzas } from './redux/action/pizzas'
 
 function App() {
-  const dispatch = useDispatch();
-  
-  React.useEffect(()=> {
-    //Перенести в redux и подключить redux-thunk.
-    //следить за фильтрацией и сортировкой.
-    //Сделать загрузку *имитация.
-    axios.get('http://localhost:3004/pizzas').then(({ data }) => {
-      dispatch(setPizzas(data));
-    //setPizzas(data.pizzas);
-    });
-  }, []);
 
   return(
     <div className="wrapper">

@@ -3,7 +3,7 @@ import { Category, SortPopup, PizzaBlock, LoadingBlock } from "../components";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategory, setSortBy } from '../redux/action/filters'
-import { fetchPizzas } from '../redux/action/pizzas'
+import { fetchPizzas } from '../redux/action/pizzas';
 
 //Вынесены чтобы не было лишнего ререндера
 const CategoryArr = [
@@ -23,24 +23,28 @@ const SortItems = [
 function Home() {
   const dispatch = useDispatch();
   const items = useSelector(({ pizzas }) => pizzas.items ); 
+  const cartItems = useSelector(({ cart }) => cart.items);
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded ); 
   const { category, sortBy } = useSelector(({ filters }) => filters ); 
 
-  //Перенести в redux и подключить redux-thunk.
-    //следить за фильтрацией и сортировкой.
-    //Сделать загрузку *имитация
   React.useEffect(()=> {
       dispatch(fetchPizzas(sortBy, category));
-  }, [category, sortBy]);
+  }, [dispatch, category, sortBy]);
 
   const onSelectCategory = React.useCallback((index) => {
     dispatch(setCategory(index));
-  }, []);
+  }, [dispatch]);
 
   const onSelectSortBy = React.useCallback((type) => {
     dispatch(setSortBy(type));
-  }, []);
+  }, [dispatch]);
 
+  const handleAddPizza= (obj) =>{
+    dispatch({
+      type: 'ADD_PIZZA_CART',
+      payload: obj,
+    });
+  };
 
     return (
         <div className="container">
@@ -54,7 +58,12 @@ function Home() {
             <h2 className="content__title">Все пиццы</h2>
               <div className="content__items">
                 {isLoaded ? items && items.map((obj) => (
-                  <PizzaBlock key={obj.id} isLoading={true} {...obj} />)) : Array(12).fill(0).map((_, index) => <LoadingBlock key={index}/>)}
+                  <PizzaBlock 
+                    onClickAddPizza={handleAddPizza} 
+                    key={obj.id}
+                    cartCount={cartItems[obj.id] && cartItems[obj.id].length}
+                    {...obj} />)) : Array(12).fill(0).map((_, index) => <LoadingBlock key={index}/>)
+                  }
               </div>
           </div>
     )

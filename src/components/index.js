@@ -3,4 +3,6 @@ export { default as Header} from './Header';
 export { default as Category} from './Category';
 export { default as SortPopup} from './SortPopup';
 export { default as PizzaBlock} from './PizzaBlock';
-export { default as LoadingBlock } from './PizzaBlock/LoadingBlock'
+export { default as LoadingBlock } from './PizzaBlock/LoadingBlock';
+export { default as CartItem } from './CartItem';
+

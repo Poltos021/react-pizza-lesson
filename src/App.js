@@ -4,7 +4,7 @@ import React from "react";
 
 import { Routes, Route } from "react-router";
 import { Header } from "./components";
-import { Home, Cart } from './pages';
+import { Home, Cart, Ready } from './pages';
 
 function App() {
 
@@ -15,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={ <Home />} exact/>
             <Route path="/cart" element={<Cart />} exact/>
+            <Route path="/ready" element={<Ready />} exact/>
           </Routes>
         </div>
       </div>

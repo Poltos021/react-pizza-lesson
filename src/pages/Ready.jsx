@@ -9,13 +9,12 @@ while (rs.length < 9) {
 function Ready() {
   return (
     <div className='cart cart--empty'>
-        <h2>Ваш заказ сделан!!!</h2>
-        <h3>Номер уникального заказ: <p>{rs}</p></h3>
+        <h2>Ваш заказ сделан!!!!!!!!!!!!!</h2>
+          {/* <h3>Номер уникального заказ: <p>{rs}</p></h3> */}
         <a href='/' className="button button--black">
-            <span>Вернуться назад!</span>
+          <span>Вернуться назад!</span>
         </a>
     </div>
-
   )
 }
 

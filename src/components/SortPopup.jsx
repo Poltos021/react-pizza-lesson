@@ -74,4 +74,4 @@ SortPopup.defaultProps = {
   items: [],
 };
 
-export default SortPopup
+export default SortPopup;

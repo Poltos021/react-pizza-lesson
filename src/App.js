@@ -7,7 +7,6 @@ import { Header } from "./components";
 import { Home, Cart, Ready } from './pages';
 
 function App() {
-
   return(
     <div className="wrapper">
       <Header />
